@@ -74,7 +74,7 @@ class CharacterCard extends StatelessWidget {
             top: 8,
             right: 8,
             child: GestureDetector(
-              onTap: onFavoriteTap, // Убрали вызов анимации
+              onTap: onFavoriteTap,
               child: Container(
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
