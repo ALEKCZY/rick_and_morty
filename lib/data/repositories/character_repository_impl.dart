@@ -25,14 +25,11 @@ class CharacterRepositoryImpl implements CharacterRepository {
 
       final results = response.data['results'] as List;
       final characters = results.map((json) => Character.fromJson(json)).toList();
-
-      // Cache characters
       await charactersBox.putAll({for (var c in characters) c.id: c});
 
       return characters;
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionError) {
-        // Return cached data if offline
         return charactersBox.values.toList();
       }
       rethrow;
